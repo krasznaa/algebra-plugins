@@ -134,7 +134,8 @@ if( ALGEBRA_PLUGINS_SETUP_VC )
    else()
       add_subdirectory( extern/vc )
    endif()
-   if( NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC" )
+   if( ( NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC" ) AND
+       ( NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "AppleClang" ) )
       # Use the preferred compiler flags from Vc for the entire project. Do not
       # set them on the libraries individually, as the clients of the libraries
       # may want to use a different optimisation.
