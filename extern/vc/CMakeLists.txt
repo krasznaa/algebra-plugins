@@ -23,6 +23,7 @@ if( DEFINED CACHE{BUILD_TESTING} )
    set( _buildTestingValue ${BUILD_TESTING} )
 endif()
 set( BUILD_TESTING FALSE CACHE INTERNAL "Forceful setting of BUILD_TESTING" )
+set( Vc_XOP_INTRINSICS_BROKEN TRUE )
 
 # Get it into the current directory.
 FetchContent_MakeAvailable( Vc )
