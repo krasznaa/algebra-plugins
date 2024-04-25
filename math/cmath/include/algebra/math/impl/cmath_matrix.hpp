@@ -1,6 +1,6 @@
 /** Algebra plugins library, part of the ACTS project
  *
- * (c) 2022-2023 CERN for the benefit of the ACTS project
+ * (c) 2022-2024 CERN for the benefit of the ACTS project
  *
  * Mozilla Public License Version 2.0
  */
@@ -10,6 +10,7 @@
 // Project include(s).
 #include "algebra/math/algorithms/utils/algorithm_finder.hpp"
 #include "algebra/qualifiers.hpp"
+#include "algebra/scalar.hpp"
 
 namespace algebra::cmath::matrix {
 
@@ -94,7 +95,7 @@ struct actor {
 
     for (size_type i = 0; i < ROWS; ++i) {
       for (size_type j = 0; j < COLS; ++j) {
-        element_getter()(ret, i, j) = 0;
+        element_getter()(ret, i, j) = 0._sc;
       }
     }
 
@@ -109,9 +110,9 @@ struct actor {
     for (size_type i = 0; i < ROWS; ++i) {
       for (size_type j = 0; j < COLS; ++j) {
         if (i == j) {
-          element_getter()(ret, i, j) = 1;
+          element_getter()(ret, i, j) = 1._sc;
         } else {
-          element_getter()(ret, i, j) = 0;
+          element_getter()(ret, i, j) = 0._sc;
         }
       }
     }
@@ -125,7 +126,7 @@ struct actor {
 
     for (size_type i = 0; i < ROWS; ++i) {
       for (size_type j = 0; j < COLS; ++j) {
-        element_getter()(m, i, j) = 0;
+        element_getter()(m, i, j) = 0._sc;
       }
     }
   }
@@ -138,9 +139,9 @@ struct actor {
     for (size_type i = 0; i < ROWS; ++i) {
       for (size_type j = 0; j < COLS; ++j) {
         if (i == j) {
-          element_getter()(m, i, j) = 1;
+          element_getter()(m, i, j) = 1._sc;
         } else {
-          element_getter()(m, i, j) = 0;
+          element_getter()(m, i, j) = 0._sc;
         }
       }
     }

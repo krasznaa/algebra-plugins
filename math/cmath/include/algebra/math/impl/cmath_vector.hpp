@@ -1,6 +1,6 @@
 /** Algebra plugins library, part of the ACTS project
  *
- * (c) 2020-2022 CERN for the benefit of the ACTS project
+ * (c) 2020-2024 CERN for the benefit of the ACTS project
  *
  * Mozilla Public License Version 2.0
  */
@@ -10,6 +10,7 @@
 // Project include(s).
 #include "algebra/math/common.hpp"
 #include "algebra/qualifiers.hpp"
+#include "algebra/scalar.hpp"
 
 namespace algebra::cmath {
 
@@ -112,7 +113,7 @@ template <typename size_type, template <typename, size_type> class array_t,
           std::enable_if_t<std::is_scalar_v<scalar_t>, bool> = true>
 ALGEBRA_HOST_DEVICE inline scalar_t dot(const array_t<scalar_t, N> &a,
                                         const array_t<scalar_t, N> &b) {
-  scalar_t ret = 0;
+  scalar_t ret = scalar::zero();
   for (size_type i = 0; i < N; i++) {
     ret += a[i] * b[i];
   }
@@ -133,7 +134,8 @@ template <
 ALGEBRA_HOST_DEVICE inline scalar_t dot(
     const array_t<scalar_t, N> &a,
     const array_t<array_t<scalar_t, N>, COLS> &b) {
-  scalar_t ret = 0;
+
+  scalar_t ret = scalar::zero();
   for (size_type i = 0; i < N; i++) {
     ret += a[i] * b[0][i];
   }
@@ -154,7 +156,8 @@ template <
 ALGEBRA_HOST_DEVICE inline scalar_t dot(
     const array_t<array_t<scalar_t, N>, COLS> &a,
     const array_t<scalar_t, N> &b) {
-  scalar_t ret = 0;
+
+  scalar_t ret = scalar::zero();
   for (size_type i = 0; i < N; i++) {
     ret += a[0][i] * b[i];
   }
@@ -175,7 +178,8 @@ template <
 ALGEBRA_HOST_DEVICE inline scalar_t dot(
     const array_t<array_t<scalar_t, N>, COLS> &a,
     const array_t<array_t<scalar_t, N>, COLS> &b) {
-  scalar_t ret = 0;
+
+  scalar_t ret = scalar::zero();
   for (size_type i = 0; i < N; i++) {
     ret += a[0][i] * b[0][i];
   }

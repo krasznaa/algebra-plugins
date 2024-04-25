@@ -1,6 +1,6 @@
 /** Algebra plugins library, part of the ACTS project
  *
- * (c) 2020-2022 CERN for the benefit of the ACTS project
+ * (c) 2020-2024 CERN for the benefit of the ACTS project
  *
  * Mozilla Public License Version 2.0
  */
@@ -11,6 +11,7 @@
 #include "algebra/math/impl/cmath_getter.hpp"
 #include "algebra/math/impl/cmath_vector.hpp"
 #include "algebra/qualifiers.hpp"
+#include "algebra/scalar.hpp"
 
 namespace algebra::cmath {
 
@@ -80,19 +81,19 @@ struct transform3 {
     matrix_actor().element(_data, 0, 0) = x[0];
     matrix_actor().element(_data, 1, 0) = x[1];
     matrix_actor().element(_data, 2, 0) = x[2];
-    matrix_actor().element(_data, 3, 0) = 0.;
+    matrix_actor().element(_data, 3, 0) = 0._sc;
     matrix_actor().element(_data, 0, 1) = y[0];
     matrix_actor().element(_data, 1, 1) = y[1];
     matrix_actor().element(_data, 2, 1) = y[2];
-    matrix_actor().element(_data, 3, 1) = 0.;
+    matrix_actor().element(_data, 3, 1) = 0._sc;
     matrix_actor().element(_data, 0, 2) = z[0];
     matrix_actor().element(_data, 1, 2) = z[1];
     matrix_actor().element(_data, 2, 2) = z[2];
-    matrix_actor().element(_data, 3, 2) = 0.;
+    matrix_actor().element(_data, 3, 2) = 0._sc;
     matrix_actor().element(_data, 0, 3) = t[0];
     matrix_actor().element(_data, 1, 3) = t[1];
     matrix_actor().element(_data, 2, 3) = t[2];
-    matrix_actor().element(_data, 3, 3) = 1.;
+    matrix_actor().element(_data, 3, 3) = 1._sc;
 
     if (get_inverse) {
       _data_inv = matrix_actor().inverse(_data);
@@ -120,22 +121,22 @@ struct transform3 {
   ALGEBRA_HOST_DEVICE
   transform3(const vector3 &t) {
 
-    matrix_actor().element(_data, 0, 0) = 1.;
-    matrix_actor().element(_data, 1, 0) = 0.;
-    matrix_actor().element(_data, 2, 0) = 0.;
-    matrix_actor().element(_data, 3, 0) = 0.;
-    matrix_actor().element(_data, 0, 1) = 0.;
-    matrix_actor().element(_data, 1, 1) = 1.;
-    matrix_actor().element(_data, 2, 1) = 0.;
-    matrix_actor().element(_data, 3, 1) = 0.;
-    matrix_actor().element(_data, 0, 2) = 0.;
-    matrix_actor().element(_data, 1, 2) = 0.;
-    matrix_actor().element(_data, 2, 2) = 1.;
-    matrix_actor().element(_data, 3, 2) = 0.;
+    matrix_actor().element(_data, 0, 0) = 1._sc;
+    matrix_actor().element(_data, 1, 0) = 0._sc;
+    matrix_actor().element(_data, 2, 0) = 0._sc;
+    matrix_actor().element(_data, 3, 0) = 0._sc;
+    matrix_actor().element(_data, 0, 1) = 0._sc;
+    matrix_actor().element(_data, 1, 1) = 1._sc;
+    matrix_actor().element(_data, 2, 1) = 0._sc;
+    matrix_actor().element(_data, 3, 1) = 0._sc;
+    matrix_actor().element(_data, 0, 2) = 0._sc;
+    matrix_actor().element(_data, 1, 2) = 0._sc;
+    matrix_actor().element(_data, 2, 2) = 1._sc;
+    matrix_actor().element(_data, 3, 2) = 0._sc;
     matrix_actor().element(_data, 0, 3) = t[0];
     matrix_actor().element(_data, 1, 3) = t[1];
     matrix_actor().element(_data, 2, 3) = t[2];
-    matrix_actor().element(_data, 3, 3) = 1.;
+    matrix_actor().element(_data, 3, 3) = 1._sc;
 
     _data_inv = matrix_actor().inverse(_data);
   }
